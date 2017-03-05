@@ -1,0 +1,6 @@
+#!/bin/bash
+
+for file in *.c; do
+echo ${file%.c}
+gcc -o ${file%.c}.exe $file
+done
