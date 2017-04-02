@@ -1,9 +1,13 @@
-git add .
+#!/bin/bash
 
+git add .
+echo 'Enter commit message: '
 read comment
-git commit -m \"$comment\"
+git commit -m "$comment"
 
 git push
+#branch=$(git branch | cut -c3- | dmenu -p "Select the branch to push: ")
+#git push $branch
 
 # push without login each time (use ssh):
 # https://help.github.com/articles/connecting-to-github-with-ssh/
