@@ -1,6 +1,6 @@
 #!/bin/bash
-git add .
+git add . & wait
 read -p "commit comment : " comment
-git commit -m $comment
+git commit -m $comment & wait
 git push
 
