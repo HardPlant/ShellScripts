@@ -1,4 +1,4 @@
-#curl -s -L goo.gl/q8p2CG | sudo bash
+#curl -s -L goo.gl/FVfWP6 | sudo bash -s
 
 #curl
 yum -y install curl wget
