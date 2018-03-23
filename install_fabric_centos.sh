@@ -9,9 +9,9 @@ GVERSION="1.8.3"
 GFILE="go$GVERSION.linux-amd64.tar.gz"
 
 GOROOT="/usr/local/go"
-wget --no-verbose https://storage.googleapis.com/golang/$GFILE -O /tmp
+wget --no-verbose https://storage.googleapis.com/golang/$GFILE -O /tmp$/GFILE
 
-tar -C "/usr/local" -xzf /tmp
+tar -C "/usr/local" -xzf /tmp/$GFILE
 
 cp -f "$HOME/.bashrc" "$HOME/.bashrc.bkp"
 
