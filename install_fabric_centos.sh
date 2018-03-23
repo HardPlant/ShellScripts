@@ -2,7 +2,7 @@
 set -e
 
 #curl
-yum -y install curl
+yum -y install curl wget
 
 #Go
 GVERSION="1.8.3"
