@@ -38,4 +38,6 @@ add-apt-repository "deb [arch=amd64] https://download.docker.com/linux/ubuntu$(l
 sudo apt-get update
 sudo apt-get install docker-ce
 
+sudo service docker start
+
 curl -sSL https://goo.gl/6wtTN5 | bash -s 1.1.0
