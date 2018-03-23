@@ -1,4 +1,4 @@
-#curl -s -L https://raw.githubusercontent.com/HardPlant/ShellScripts/master/install_fabric_centos.sh | sudo bash
+#curl -s -L goo.gl/4okBL4 | sudo bash
 set -e
 
 #curl
