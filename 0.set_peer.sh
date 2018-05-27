@@ -14,10 +14,16 @@ if [ -z "$1" || -z "$2" || -z "$3" ];then
     exit
 
 PEERS_DIR=/tmp/crypto-config/peerOrganizations/$ORG/peers/$PEER
+echo "PEERS_DIR : $PEERS_DIR"
 #/crypto-config/peerOrganizations/
 #   org1.example.com/peers/peer0.org1.example.com/msp:/etc/hyperledger/fabric/msp
-scp -r -P 42000 kiiren@168.131.42.48:$PEERS_DIR/msp /etc/hyperledger/fabric/tls
-scp -r -P 42000 kiiren@168.131.42.48:$PEERS_DIR/tls /etc/hyperledger/fabric/msp
+
+if [ ! -d "/etc/hyperledger/fabric/tls"]; then
+    scp -r -P 42000 kiiren@168.131.42.48:$PEERS_DIR/msp /etc/hyperledger/fabric/tls
+fi
+if [ ! -d "/etc/hyperledger/fabric/msp"]; then
+    scp -r -P 42000 kiiren@168.131.42.48:$PEERS_DIR/tls /etc/hyperledger/fabric/msp
+fi
 
 export CORE_LOGGING_LEVEL=DEBUG
 export CORE_PEER_TLS_ENABLED=true
@@ -34,5 +40,5 @@ export CORE_PEER_CHAINCODEADDRESS=0.0.0.0:7052
 export CORE_PEER_CHAINCODELISTENADDRESS=0.0.0.0:7052
 export CORE_PEER_GOSSIP_EXTERNALENDPOINT=0.0.0.0:7051
 export CORE_PEER_LOCALMSPID=$MSPID
-
+echo "PEER NODE START"
 ./peer node start
