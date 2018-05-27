@@ -1,7 +1,7 @@
 #!/bin/bash
 
 mkdir -p /var/hyperledger/orderer
-
+mv $(pwd)/orderer /var/hyperledger/ #assume /etc/hyperledger/orderer
 #$1 = Peer Name
 #$2 = ORG_NAME
 #$3 = MSP
