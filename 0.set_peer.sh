@@ -22,7 +22,7 @@ echo "PEERS_DIR : $PEERS_DIR"
 #/crypto-config/peerOrganizations/
 #   org1.example.com/peers/peer0.org1.example.com/msp:/etc/hyperledger/fabric/msp
 
-if [ ! -d "/etc/hyperledger/fabric/tls" ]; then
+if [ ! -d "/etc/hyperledger/fabric/msp" ]; then
     mkdir -p /etc/hyperledger/fabric/msp
     echo "GET $PEERS_DIR/msp"
     scp -r -P $PORT kiiren@$HOST:$PEERS_DIR/msp /etc/hyperledger/fabric/msp
