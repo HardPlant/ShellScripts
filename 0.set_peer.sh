@@ -9,7 +9,7 @@ ORG=$2 # org1.example.com
 MSPID=$3
 PEER=$1.$2 # peer0.org1.example.com
 
-if [ \(-z "$1"\) -o \(-z "$2"\) -o \(-z "$3"\) ];then
+if [ -z "$1" ] || [ -z "$2" ] || [ -z "$3" ];then
     echo "usage: ./$0 PEERNAME ORG MSPID"
     echo "example: ./$0 peer0 org1.example.com Org1MSP"
     exit
@@ -20,11 +20,11 @@ echo "PEERS_DIR : $PEERS_DIR"
 #/crypto-config/peerOrganizations/
 #   org1.example.com/peers/peer0.org1.example.com/msp:/etc/hyperledger/fabric/msp
 
-if [ ! -d "/etc/hyperledger/fabric/tls"]; then
+if [ ! -d "/etc/hyperledger/fabric/tls" ]; then
     scp -r -P 42000 kiiren@168.131.42.48:$PEERS_DIR/msp /etc/hyperledger/fabric/tls
     echo "GET TLS : $(ls /etc/hyperledger/fabric/tls)"
 fi
-if [ ! -d "/etc/hyperledger/fabric/msp"]; then
+if [ ! -d "/etc/hyperledger/fabric/msp" ]; then
     scp -r -P 42000 kiiren@168.131.42.48:$PEERS_DIR/tls /etc/hyperledger/fabric/msp
     echo "GET MSP : $(ls /etc/hyperledger/fabric/tls)"
 fi
