@@ -12,6 +12,7 @@ if [ -z "$1" || -z "$2" || -z "$3" ];then
     echo "usage: ./$0 PEERNAME ORG MSPID"
     echo "example: ./$0 peer0 org1.example.com Org1MSP"
     exit
+fi
 
 PEERS_DIR=/tmp/crypto-config/peerOrganizations/$ORG/peers/$PEER
 echo "PEERS_DIR : $PEERS_DIR"
