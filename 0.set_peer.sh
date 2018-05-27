@@ -45,7 +45,7 @@ export CORE_PEER_TLS_KEY_FILE=/etc/hyperledger/tls/server.key
 export CORE_PEER_TLS_ROOTCERT_FILE=/etc/hyperledger/tls/ca.crt
 
 export CORE_PEER_ID=$PEER
-export CORE_PEER_ADDRESS=0.0.0.0:7051
+export CORE_PEER_ADDRESS=localhost:7051
 export CORE_PEER_CHAINCODEADDRESS=localhost:7052
 export CORE_PEER_CHAINCODELISTENADDRESS=0.0.0.0:7052
 export CORE_PEER_GOSSIP_EXTERNALENDPOINT=localhost:7051
