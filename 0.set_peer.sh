@@ -20,9 +20,11 @@ echo "PEERS_DIR : $PEERS_DIR"
 
 if [ ! -d "/etc/hyperledger/fabric/tls"]; then
     scp -r -P 42000 kiiren@168.131.42.48:$PEERS_DIR/msp /etc/hyperledger/fabric/tls
+    echo "GET TLS : $(ls /etc/hyperledger/fabric/tls)"
 fi
 if [ ! -d "/etc/hyperledger/fabric/msp"]; then
     scp -r -P 42000 kiiren@168.131.42.48:$PEERS_DIR/tls /etc/hyperledger/fabric/msp
+    echo "GET MSP : $(ls /etc/hyperledger/fabric/tls)"
 fi
 
 export CORE_LOGGING_LEVEL=DEBUG
