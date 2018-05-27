@@ -10,6 +10,7 @@ export GOROOT=/usr/local/go
 mkdir -p $HOME/go/src
 export GOPATH=$HOME/go
 export PATH=$PATH:$GOROOT/bin
+
 echo "GOROOT=/usr/local/go" >> ~/.profile
 echo "GOPATH=$HOME/go/src" >> ~/.profile
 echo "PATH=$PATH:$GOROOT/bin" >> ~/.profile

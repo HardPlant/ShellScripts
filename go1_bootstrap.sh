@@ -1,6 +1,8 @@
 #!/bin/bash
 
-wget https://dl.google.com/go/go1.4-bootstrap-20171003.tar.gz
+if [ $1 -neq "no-download"]; then
+    wget https://dl.google.com/go/go1.4-bootstrap-20171003.tar.gz
+fi
 
 tar -xzf go1.4-bootstrap-20171003.tar.gz
 
