@@ -22,17 +22,17 @@ echo "PEERS_DIR : $PEERS_DIR"
 #/crypto-config/peerOrganizations/
 #   org1.example.com/peers/peer0.org1.example.com/msp:/etc/hyperledger/fabric/msp
 
-if [ ! -d "/etc/hyperledger/fabric/msp" ]; then
-    mkdir -p /etc/hyperledger/fabric/msp
+if [ ! -d "/etc/hyperledger/msp" ]; then
+    mkdir -p /etc/hyperledger/msp
     echo "GET $PEERS_DIR/msp"
     scp -r -P $PORT kiiren@$HOST:$PEERS_DIR/msp /etc/hyperledger
-    echo "$(ls /etc/hyperledger/fabric/msp)"
+    echo "$(ls /etc/hyperledger/msp)"
 fi
-if [ ! -d "/etc/hyperledger/fabric/tls" ]; then
-    mkdir -p /etc/hyperledger/fabric/tls
+if [ ! -d "/etc/hyperledger/tls" ]; then
+    mkdir -p /etc/hyperledger/tls
     echo "GET $PEERS_DIR/tls"
     scp -r -P $PORT kiiren@$HOST:$PEERS_DIR/tls /etc/hyperledger
-    echo "$(ls /etc/hyperledger/fabric/tls)"
+    echo "$(ls /etc/hyperledger/tls)"
 fi
 
 export CORE_LOGGING_LEVEL=DEBUG
@@ -40,9 +40,9 @@ export CORE_PEER_TLS_ENABLED=true
 export CORE_PEER_GOSSIP_USELEADERELECTION=true
 export CORE_PEER_GOSSIP_ORGLEADER=false
 export CORE_PEER_PROFILE_ENABLED=true
-export CORE_PEER_TLS_CERT_FILE=/etc/hyperledger/fabric/tls/server.crt
-export CORE_PEER_TLS_KEY_FILE=/etc/hyperledger/fabric/tls/server.key
-export CORE_PEER_TLS_ROOTCERT_FILE=/etc/hyperledger/fabric/tls/ca.crt
+export CORE_PEER_TLS_CERT_FILE=/etc/hyperledger/tls/server.crt
+export CORE_PEER_TLS_KEY_FILE=/etc/hyperledger/tls/server.key
+export CORE_PEER_TLS_ROOTCERT_FILE=/etc/hyperledger/tls/ca.crt
 
 export CORE_PEER_ID=$PEER
 export CORE_PEER_ADDRESS=0.0.0.0:7051
@@ -50,5 +50,6 @@ export CORE_PEER_CHAINCODEADDRESS=0.0.0.0:7052
 export CORE_PEER_CHAINCODELISTENADDRESS=0.0.0.0:7052
 export CORE_PEER_GOSSIP_EXTERNALENDPOINT=0.0.0.0:7051
 export CORE_PEER_LOCALMSPID=$MSPID
+export CORE_PEER_MSPCONFIGPATH=/etc/hyperledger/msp
 echo "PEER NODE START"
 ./peer node start
