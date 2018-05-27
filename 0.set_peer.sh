@@ -25,13 +25,13 @@ echo "PEERS_DIR : $PEERS_DIR"
 if [ ! -d "/etc/hyperledger/fabric/msp" ]; then
     mkdir -p /etc/hyperledger/fabric/msp
     echo "GET $PEERS_DIR/msp"
-    scp -r -P $PORT kiiren@$HOST:$PEERS_DIR/msp /etc/hyperledger/fabric
+    scp -r -P $PORT kiiren@$HOST:$PEERS_DIR/msp /etc/hyperledger
     echo "$(ls /etc/hyperledger/fabric/msp)"
 fi
 if [ ! -d "/etc/hyperledger/fabric/tls" ]; then
     mkdir -p /etc/hyperledger/fabric/tls
     echo "GET $PEERS_DIR/tls"
-    scp -r -P $PORT kiiren@$HOST:$PEERS_DIR/tls /etc/hyperledger/fabric
+    scp -r -P $PORT kiiren@$HOST:$PEERS_DIR/tls /etc/hyperledger
     echo "$(ls /etc/hyperledger/fabric/tls)"
 fi
 
