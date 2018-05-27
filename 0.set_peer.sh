@@ -8,7 +8,8 @@ PEERNAME=$1 # peer0
 ORG=$2 # org1.example.com
 MSPID=$3
 PEER=$1.$2 # peer0.org1.example.com
-if [ -z "$1" || -z "$2" || -z "$3" ];then
+
+if [ \(-z "$1"\) -o \(-z "$2"\) -o \(-z "$3"\) ];then
     echo "usage: ./$0 PEERNAME ORG MSPID"
     echo "example: ./$0 peer0 org1.example.com Org1MSP"
     exit
