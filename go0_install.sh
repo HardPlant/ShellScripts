@@ -13,4 +13,6 @@ export PATH=$PATH:$GOROOT/bin
 
 echo "GOROOT=/usr/local/go" >> ~/.profile
 echo "GOPATH=$HOME/go" >> ~/.profile
-echo "PATH=$PATH:$GOROOT/bin" >> ~/.profile
+echo "PATH=\$PATH:$GOROOT/bin" >> ~/.profile
+
+source ~/.profile
