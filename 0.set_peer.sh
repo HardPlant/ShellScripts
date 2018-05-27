@@ -15,6 +15,8 @@ if [ -z "$1" ] || [ -z "$2" ] || [ -z "$3" ];then
     exit
 fi
 HOST=192.168.30.155 #168.131.42.48
+PORT=22
+
 PEERS_DIR=/tmp/crypto-config/peerOrganizations/$ORG/peers/$PEER
 echo "PEERS_DIR : $PEERS_DIR"
 #/crypto-config/peerOrganizations/
@@ -22,11 +24,11 @@ echo "PEERS_DIR : $PEERS_DIR"
 
 if [ ! -d "/etc/hyperledger/fabric/tls" ]; then
     echo "GET TLS : $(ls /etc/hyperledger/fabric/tls)"
-    scp -r -P 42000 kiiren@$HOST:$PEERS_DIR/msp /etc/hyperledger/fabric/tls
+    scp -r -P $PORT kiiren@$HOST:$PEERS_DIR/msp /etc/hyperledger/fabric/tls
 fi
 if [ ! -d "/etc/hyperledger/fabric/msp" ]; then
     echo "GET MSP : $(ls /etc/hyperledger/fabric/tls)"
-    scp -r -P 42000 kiiren@$HOST:$PEERS_DIR/tls /etc/hyperledger/fabric/msp
+    scp -r -P $PORT kiiren@$HOST:$PEERS_DIR/tls /etc/hyperledger/fabric/msp
 fi
 
 export CORE_LOGGING_LEVEL=DEBUG
