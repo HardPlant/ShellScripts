@@ -4,9 +4,9 @@ MSPID=$3
 PEER=$1.$2 # peer0.org1.example.com
 
 if [ -z "$1" ] || [ -z "$2" ] || [ -z "$3" ];then
-    echo "usage: ./$0 PEERNAME ORG MSPID"
-    echo "example: ./$0 peer0 org1.example.com Org1MSP"
-    
+    echo "usage: . $0 PEERNAME ORG MSPID"
+    echo "example: . $0 peer0 org1.example.com Org1MSP"
+
 fi
 
 export CORE_LOGGING_LEVEL=DEBUG
