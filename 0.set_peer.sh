@@ -23,12 +23,16 @@ echo "PEERS_DIR : $PEERS_DIR"
 #   org1.example.com/peers/peer0.org1.example.com/msp:/etc/hyperledger/fabric/msp
 
 if [ ! -d "/etc/hyperledger/fabric/tls" ]; then
-    echo "GET TLS : $(ls /etc/hyperledger/fabric/tls)"
-    scp -r -P $PORT kiiren@$HOST:$PEERS_DIR/msp /etc/hyperledger/fabric
+    mkdir -p /etc/hyperledger/fabric/tls
+    echo "GET TLS"
+    scp -r -P $PORT kiiren@$HOST:$PEERS_DIR/msp /etc/hyperledger/fabric/msp
+    echo "$(ls /etc/hyperledger/fabric/tls)"
 fi
 if [ ! -d "/etc/hyperledger/fabric/msp" ]; then
-    echo "GET MSP : $(ls /etc/hyperledger/fabric/tls)"
-    scp -r -P $PORT kiiren@$HOST:$PEERS_DIR/tls /etc/hyperledger/fabric
+    mkdir -p /etc/hyperledger/fabric/msp
+    echo "GET MSP"
+    scp -r -P $PORT kiiren@$HOST:$PEERS_DIR/tls /etc/hyperledger/fabric/tls
+    echo "$(ls /etc/hyperledger/fabric/tls)"
 fi
 
 export CORE_LOGGING_LEVEL=DEBUG
