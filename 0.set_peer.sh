@@ -60,9 +60,6 @@ export CORE_PEER_CHAINCODELISTENADDRESS=0.0.0.0:7052
 export CORE_PEER_GOSSIP_EXTERNALENDPOINT=localhost:7051
 export CORE_PEER_LOCALMSPID=$MSPID
 export CORE_PEER_MSPCONFIGPATH=/etc/hyperledger/msp
+
 echo "PEER NODE START"
 ./peer node start
-
-./peer channel create -o orderer.example.com:7050 \
--c composerchannel \
--f /etc/hyperledger/configtx/composer-channel.tx
