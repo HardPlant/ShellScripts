@@ -25,7 +25,7 @@ echo "PEERS_DIR : $PEERS_DIR"
 if [ ! -d "/etc/hyperledger/configtx" ]; then
     mkdir -p /etc/hyperledger/configtx
     echo "GET $PEERS_DIR/configtx"
-    scp -r -P $PORT kiiren@$HOST:$CONFIGTX_DIR/configtx /etc/hyperledger
+    scp -r -P $PORT kiiren@$HOST:$CONFIGTX_DIR /etc/hyperledger
     echo "$(ls /etc/hyperledger/configtx)"
 fi
 
