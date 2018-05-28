@@ -8,6 +8,7 @@ PEERNAME=$1 # peer0
 ORG=$2 # org1.example.com
 MSPID=$3
 PEER=$1.$2 # peer0.org1.example.com
+CONFIGTX_DIR=/tmp/channel-artifacts
 
 if [ -z "$1" ] || [ -z "$2" ] || [ -z "$3" ];then
     echo "usage: ./$0 PEERNAME ORG MSPID"
@@ -21,6 +22,14 @@ PEERS_DIR=/tmp/crypto-config/peerOrganizations/$ORG/peers/$PEER
 echo "PEERS_DIR : $PEERS_DIR"
 #/crypto-config/peerOrganizations/
 #   org1.example.com/peers/peer0.org1.example.com/msp:/etc/hyperledger/fabric/msp
+if [ ! -d "/etc/hyperledger/configtx" ]; then
+    mkdir -p /etc/hyperledger/configtx
+    echo "GET $PEERS_DIR/configtx"
+    scp -r -P $PORT kiiren@$HOST:$CONFIGTX_DIR/configtx /etc/hyperledger
+    echo "$(ls /etc/hyperledger/configtx)"
+fi
+
+scp -r -P 42000 kiiren@168.131.42.48:$CONFIGTX_DIR /var/hyperledger
 
 if [ ! -d "/etc/hyperledger/msp" ]; then
     mkdir -p /etc/hyperledger/msp
@@ -53,3 +62,7 @@ export CORE_PEER_LOCALMSPID=$MSPID
 export CORE_PEER_MSPCONFIGPATH=/etc/hyperledger/msp
 echo "PEER NODE START"
 ./peer node start
+
+./peer channel create -o orderer.example.com:7050 \
+-c composerchannel \
+-f /etc/hyperledger/configtx/composer-channel.tx

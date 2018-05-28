@@ -15,3 +15,8 @@ zone "org2.example.com" {
     type master;
     file "/etc/bind/zones/db.org2.example.com"; # zone file path
 };
+
+zone "orderer.example.com" {
+    type master;
+    file "/etc/bind/zones/db.orderer.example.com"; # zone file path
+};

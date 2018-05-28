@@ -13,8 +13,10 @@ ORDERER=$1.$2 # orderer0.org1.example.com
 
 ARTIFACT=/tmp/channel-artifacts/genesis.block
 ORDERERS_DIR=/tmp/crypto-config/ordererOrganizations/$ORG/orderers/$ORDERER
+CONFIGTX_DIR=/tmp/channel-artifacts
 
 scp -r -P 42000 kiiren@168.131.42.48:$ARTIFACT /var/hyperledger/orderer
+scp -r -P 42000 kiiren@168.131.42.48:$CONFIGTX_DIR /var/hyperledger/contigtx
 scp -r -P 42000 kiiren@168.131.42.48:$ORDERERS_DIR/msp /var/hyperledger/orderer/tls
 scp -r -P 42000 kiiren@168.131.42.48:$ORDERERS_DIR/tls /var/hyperledger/orderer/msp
 
